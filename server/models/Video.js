@@ -16,6 +16,25 @@ const videoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  thumbnailUrl: {
+    type: String
+  },
+  lengthSeconds: {
+    type: Number
+  },
+  resolution: {
+    type: String
+  },
+  format: {
+    type: String
+  },
+  tags: {
+    type: [String]
+  },
+  publishedDate: {
+    type: Date,
+    required: true
+  }
 });
 
 const Video = mongoose.model('Video', videoSchema);
