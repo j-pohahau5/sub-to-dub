@@ -58,6 +58,76 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
+      uploadVideo: async (parent, { userId, url, title, description }, context) => {
+        if (context.user) {
+          const video = await Video.create({
+            url,
+            title,
+            description,
+          })
+          await User.findOneAndUpdate(
+            { _id: userId },
+            { $addToSet: { videos: video._id } }
+          );
+          return video;
+        }
+        throw new AuthenticationError("You need to be logged in!");
+      },
+    
+      createSubtitle: async (parent, { videoId, language, text, translatedText }) => {
+        const subtitle = await Subtitle.create({
+          videoId,
+          language,
+          text,
+          translatedText
+        })
+        return subtitle;
+      },
+    
+      createVoiceover: async (parent, { videoId, language, audioUrl }) => {
+        const voiceover = await Voiceover.create({
+          videoId,
+          language,
+          audioUrl
+        })
+        return voiceover;
+      },
+    
+      createLanguage: async (parent, { name, code }) => {
+        const language = await Language.create({
+          name,
+          code
+        })
+        return language;
+      },
+    
+      makePayment: async (parent, { userId, amount, date }) => {
+        const payment = await Payment.create({
+          userId,
+          amount,
+          date
+        })
+        return payment;
+      },
+    
+      addCollaborator: async (parent, { userId, videoId, role }) => {
+        const collaboration = await Collaboration.create({
+          userId,
+          videoId,
+          role
+        })
+        return collaboration;
+      },
+    
+      updateAnalytics: async (parent, { userId, videoId, subtitleDownloads, voiceoverDownloads, feedback }) => {
+        const analytics = await Analytics.findOneAndUpdate(
+          { userId, videoId },
+          { $set: { subtitleDownloads, voiceoverDownloads, feedback } },
+          { new: true, upsert: true }
+        )
+        return analytics;
+      }
+    
     },
   };
   
