@@ -60,7 +60,9 @@ const typeDefs = gql`
   }
 
   type Query {
+    me: User
     getUser(id: ID!): User
+    getUsers: [User]!
     getVideo(id: ID!): Video
     getSubtitles(videoId: ID!): [Subtitle]
     getVoiceovers(videoId: ID!): [Voiceover]
@@ -72,7 +74,7 @@ const typeDefs = gql`
 
   type Mutation {
     registerUser(name: String!, email: String!, password: String!): User
-    loginUser(email: String!, password: String!): User
+    login(email: String!, password: String!): User
     uploadVideo(userId: ID!, url: String!, title: String!, description: String!): Video
     createSubtitle(videoId: ID!, language: String!, text: String!, translatedText: String): Subtitle
     createVoiceover(videoId: ID!, language: String!, audioUrl: String!): Voiceover
