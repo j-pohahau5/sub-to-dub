@@ -75,57 +75,79 @@ const resolvers = {
       },
     
       createSubtitle: async (parent, { videoId, language, text, translatedText }) => {
-        const subtitle = await Subtitle.create({
-          videoId,
-          language,
-          text,
-          translatedText
-        })
-        return subtitle;
+        if (context.user) {
+          const subtitle = await Subtitle.create({
+            videoId,
+            language,
+            text,
+            translatedText
+          })
+          return subtitle;  
+        }
+        throw new AuthenticationError("You need to be logged in!");
       },
     
       createVoiceover: async (parent, { videoId, language, audioUrl }) => {
-        const voiceover = await Voiceover.create({
-          videoId,
-          language,
-          audioUrl
-        })
-        return voiceover;
+        if (context.user) {
+          const voiceover = await Voiceover.create({
+            videoId,
+            language,
+            audioUrl
+          })
+          return voiceover;  
+        }
+        throw new AuthenticationError("You need to be logged in!");
       },
     
       createLanguage: async (parent, { name, code }) => {
-        const language = await Language.create({
-          name,
-          code
-        })
-        return language;
+        if (context.user) {
+          const language = await Language.create({
+            name,
+            code
+          })
+          return language; 
+        }
+        throw new AuthenticationError("You need to be logged in!");
+        
       },
     
       makePayment: async (parent, { userId, amount, date }) => {
-        const payment = await Payment.create({
-          userId,
-          amount,
-          date
-        })
-        return payment;
+        if (context.user) {
+          const payment = await Payment.create({
+            userId,
+            amount,
+            date
+          })
+        return payment; 
+        }
+        throw new AuthenticationError("You need to be logged in!");
+        
       },
     
       addCollaborator: async (parent, { userId, videoId, role }) => {
-        const collaboration = await Collaboration.create({
-          userId,
-          videoId,
-          role
-        })
-        return collaboration;
+        if (context.user) {
+          const collaboration = await Collaboration.create({
+            userId,
+            videoId,
+            role
+          })
+          return collaboration;   
+        }
+        throw new AuthenticationError("You need to be logged in!");
+        
       },
     
       updateAnalytics: async (parent, { userId, videoId, subtitleDownloads, voiceoverDownloads, feedback }) => {
-        const analytics = await Analytics.findOneAndUpdate(
-          { userId, videoId },
-          { $set: { subtitleDownloads, voiceoverDownloads, feedback } },
-          { new: true, upsert: true }
-        )
-        return analytics;
+        if (context.user) {
+          const analytics = await Analytics.findOneAndUpdate(
+            { userId, videoId },
+            { $set: { subtitleDownloads, voiceoverDownloads, feedback } },
+            { new: true, upsert: true }
+          )
+          return analytics;
+        }
+        throw new AuthenticationError("You need to be logged in!");
+        
       }
     
     },
