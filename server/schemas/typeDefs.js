@@ -33,7 +33,7 @@ const typeDefs = gql`
   type Language {
     id: ID!
     name: String!
-    code: String!
+    languageCode: String!
   }
 
   type Payment {
@@ -78,7 +78,7 @@ const typeDefs = gql`
     uploadVideo(userId: ID!, url: String!, title: String!, description: String!): Video
     createSubtitle(videoId: ID!, language: String!, text: String!, translatedText: String): Subtitle
     createVoiceover(videoId: ID!, language: String!, audioUrl: String!): Voiceover
-    createLanguage(name: String!, code: String!): Language
+    createLanguage(name: String!, languageCode: String!): Language
     makePayment(userId: ID!, amount: Float!, date: String!): Payment
     addCollaborator(userId: ID!, videoId: ID!, role: String!): Collaboration
     updateAnalytics(userId: ID!, videoId: ID!, subtitleDownloads: Int!, voiceoverDownloads: Int!, feedback: String): Analytics

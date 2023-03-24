@@ -7,7 +7,7 @@ const resolvers = {
     Query: {
       me: async (parent, args, context) => {
         if (context.user) {
-          return User.findOne({ _id: context.user.id }); 
+          return User.findOne({ id: context.user.id }); 
           }
           throw new AuthenticationError("You need to be logged in!");
       },
@@ -99,11 +99,11 @@ const resolvers = {
         throw new AuthenticationError("You need to be logged in!");
       },
     
-      createLanguage: async (parent, { name, code }) => {
+      createLanguage: async (parent, { name, languageCode }) => {
         if (context.user) {
           const language = await Language.create({
             name,
-            code
+            languageCode
           })
           return language; 
         }

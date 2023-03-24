@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const languageSchema = new mongoose.Schema({
-  code: {
+  languageCode: {
     type: String,
     required: true,
   },
