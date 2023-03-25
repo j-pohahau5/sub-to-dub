@@ -73,16 +73,24 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    registerUser(name: String!, email: String!, password: String!): User
-    login(email: String!, password: String!): User
-    uploadVideo(userId: ID!, url: String!, title: String!, description: String!): Video
-    createSubtitle(videoId: ID!, language: String!, text: String!, translatedText: String): Subtitle
-    createVoiceover(videoId: ID!, language: String!, audioUrl: String!): Voiceover
-    createLanguage(name: String!, languageCode: String!): Language
-    makePayment(userId: ID!, amount: Float!, date: String!): Payment
-    addCollaborator(userId: ID!, videoId: ID!, role: String!): Collaboration
-    updateAnalytics(userId: ID!, videoId: ID!, subtitleDownloads: Int!, voiceoverDownloads: Int!, feedback: String): Analytics
+    createUser(username: String!, email: String!, password: String!): Auth
+    loginUser(email: String!, password: String!): Auth
+    addSubtitle(videoId: ID!, text: String!, languageCode: String!): Subtitle
+    deleteSubtitle(id: ID!): Subtitle
+    updateSubtitle(id: ID!, text: String!): Subtitle
+    addVoiceover(videoId: ID!, audioUrl: String!, languageCode: String!): Voiceover
+    deleteVoiceover(id: ID!): Voiceover
+    updateVoiceover(id: ID!, audioUrl: String!): Voiceover
+    addPayment(userId: ID!, amount: Float!): Payment
+    addCollaborator(videoId: ID!, email: String!): Collaboration
+    deleteCollaborator(id: ID!): Collaboration
+    addAnalytics(videoId: ID!, views: Int!, likes: Int!, dislikes: Int!): Analytics
+    updateAnalytics(id: ID!, views: Int!, likes: Int!, dislikes: Int!): Analytics
+    uploadVideo(file: Upload!): Video
+    transcribeAudio(audioUrl: String!, languageCode: String!): String
+    synthesizeSpeech(text: String!, languageCode: String!): String
   }
+
 `;
 
 module.exports = typeDefs;
