@@ -78,6 +78,8 @@ const typeDefs = gql`
     addSubtitle(videoId: ID!, text: String!, languageCode: String!): Subtitle
     deleteSubtitle(id: ID!): Subtitle
     updateSubtitle(id: ID!, text: String!): Subtitle
+    translateSubtitle(id: ID!, languageCode: String!): Subtitle
+    generateVoiceover(id: ID!, languageCode: String!): Subtitle
     addVoiceover(videoId: ID!, audioUrl: String!, languageCode: String!): Voiceover
     deleteVoiceover(id: ID!): Voiceover
     updateVoiceover(id: ID!, audioUrl: String!): Voiceover
