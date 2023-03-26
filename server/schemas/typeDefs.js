@@ -90,7 +90,6 @@ const typeDefs = gql`
     updateAnalytics(id: ID!, views: Int!, likes: Int!, dislikes: Int!): Analytics
     uploadVideo(file: Upload!): Video
     transcribeAudio(audioUrl: String!, languageCode: String!): String
-    synthesizeSpeech(text: String!, languageCode: String!): String
   }
 
 `;

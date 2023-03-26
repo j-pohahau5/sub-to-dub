@@ -212,15 +212,7 @@ const resolvers = {
           console.log(err);
           throw new Error("Failed to generate voiceover");
       }
-    },
-    synthesizeSpeech: async (parent, { text, languageCode }) => {
-    // Synthesize speech using Google Cloud Text-to-Speech
-      const request = {
-        input: { text },
-        voice: { languageCode },
-        audioConfig: { audioEncoding}
-      }
-    }   
+    }
   }
 };
     
