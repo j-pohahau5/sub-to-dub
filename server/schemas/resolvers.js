@@ -45,12 +45,12 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ id: context.user.id }); 
+        return User.findOne({ id: context.user.id }).populate('videos'); 
       }
       throw new AuthenticationError("You need to be logged in!");
     },
     getUser: async (parent, { id }) => {
-      return User.findOne({ id });
+      return User.findOne({ id }).populate('videos');
     },
     getUsers: async () => {
       return User.find();  

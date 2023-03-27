@@ -6,6 +6,7 @@ const typeDefs = gql`
     name: String!
     email: String!
     password: String!
+    videos: ID!
   }
 
   type Video {
@@ -73,7 +74,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!): Auth
+    registerUser(name: String!, email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
     addSubtitle(videoId: ID!, text: String!, languageCode: String!): Subtitle
     deleteSubtitle(id: ID!): Subtitle
