@@ -18,9 +18,9 @@ const storage = new Storage({
 
 // Configure Cloudinary with your credentials
 cloudinary.config({
-  cloud_name: 'your-cloud-name',
-  api_key: 'your-api-key',
-  api_secret: 'your-api-secret'
+  cloud_name: 'dkr1pyfgg',
+  api_key: '739743394567671',
+  api_secret: 'cWMRez4bv3Wk2p7OFImfrCZL27s'
 });
 
 // Instantiate the Google Cloud Speech-to-Text client with your project ID and credentials
