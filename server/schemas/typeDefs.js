@@ -3,6 +3,7 @@ const{ gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     id: ID!!
+    username: String!
     name: String!
     email: String!
     password: String!
@@ -74,7 +75,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    registerUser(name: String!, email: String!, password: String!): Auth
+    registerUser(username: String!, name: String!, email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
     addSubtitle(videoId: ID!, text: String!, languageCode: String!): Subtitle
     deleteSubtitle(id: ID!): Subtitle
