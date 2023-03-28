@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-// import SingleHobby from './pages/SingleHobby';
+import SingleVideo from './pages/SingleVideo';
 import Header from './components/Header';
 import Footer from './components/Footer';
 // import SingleCategory from './pages/SingleCategory';
@@ -64,12 +64,12 @@ function App() {
                                 element={<Signup />}
                         
                             />
-                            {/* <Route
-                                path="/categories/:id"
-                                element={<SingleCategory />}
+                            <Route
+                                path="/videos/:id"
+                                element={<SingleVideo />}
                         
                             />
-                            <Route
+                            {/* <Route
                                 path="/hobbies/:hobbyId"
                                 element={<SingleHobby />}
 

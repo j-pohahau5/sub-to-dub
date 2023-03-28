@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/subDub',
+  process.env.MONGODB_URI || 'mongodb+srv://cluster0.kneut25.mongodb.net/myFirstDatabase',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

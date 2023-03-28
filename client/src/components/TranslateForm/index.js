@@ -3,7 +3,7 @@ import { TRANSLATE_SUBTITLE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import { QUERY_ALL_SUBTITLES } from '../../utils/queries';
 
-function TranslateSubtitleForm(thisVideoId) {
+function TranslateForm(thisVideoId) {
   const [subtitleId, setSubtitleId] = useState('');
   const [text, setText] = useState('');
   const [language, setLanguage] = useState('');
@@ -51,4 +51,4 @@ function TranslateSubtitleForm(thisVideoId) {
   );
 }
 
-export default TranslateSubtitleForm;
+export default TranslateForm;

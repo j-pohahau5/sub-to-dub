@@ -27,7 +27,7 @@ export const QUERY_SINGLE_VIDEO = gql`
   }
 `;
 
-export const QUERY_SINGLE_USER = gql`
+export const QUERY_USER = gql`
   query getUser($id: ID! ) {
     getUser(id: $id) {
       id

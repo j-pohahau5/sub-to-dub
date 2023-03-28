@@ -10,11 +10,11 @@ const subtitleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  transcription: {
+  text: {
     type: String,
     required: true,
   },
-  translation: {
+  translatedText: {
     type: String,
     required: true,
   },

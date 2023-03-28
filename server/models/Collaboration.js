@@ -11,6 +11,10 @@ const collaborationSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  role: {
+    type: String,
+    required: true,
+  },
   // Additional fields for collaboration metadata
 });
 

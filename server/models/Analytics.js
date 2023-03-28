@@ -11,7 +11,15 @@ const analyticsSchema = new mongoose.Schema({
       ref: 'User',
       required: true,
     },
-    event: {
+    subtitleDownloads: {
+      type: Number,
+      required: true,
+    },
+    voiceoverDownloads: {
+      type: Number,
+      required: true,
+    },
+    feedback: {
       type: String,
       required: true,
     },

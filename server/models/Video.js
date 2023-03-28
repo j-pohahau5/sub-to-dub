@@ -1,3 +1,4 @@
+const { UploadStream } = require('cloudinary');
 const mongoose = require('mongoose');
 
 const videoSchema = new mongoose.Schema({
@@ -16,24 +17,9 @@ const videoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  thumbnailUrl: {
-    type: String
-  },
-  lengthSeconds: {
-    type: Number
-  },
-  resolution: {
-    type: String
-  },
-  format: {
-    type: String
-  },
-  tags: {
-    type: [String]
-  },
-  publishedDate: {
-    type: Date,
-    required: true
+  file: {
+    type: String,
+    required: true,
   }
 });
 

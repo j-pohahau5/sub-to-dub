@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_COLLABORATOR } from '../utils/mutations';
+import { ADD_COLLABORATOR } from '../../utils/mutations';
 
 const CollaboratorForm = ({ videoId }) => {
   const [collaboratorRole, setCollaboratorRole] = useState('');

@@ -2,63 +2,70 @@ const{ gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    id: ID!!
-    username: String!
-    name: String!
-    email: String!
-    password: String!
-    videos: ID!
+    id: ID
+    username: String
+    name: String
+    email: String
+    password: String
+    videos: [Video]!
   }
 
   type Video {
-    id: ID!
-    url: String!
-    title: String!
-    description: String!
+    id: ID
+    url: String
+    title: String
+    description: String
+    file: String
   }
 
   type Subtitle {
-    id: ID!
-    videoId: ID!
+    id: ID
+    videoId: [Video]!
     language: String!
-    text: String!
+    text: String
     translatedText: String
   }
 
   type Voiceover {
-    id: ID!
-    videoId: ID!
-    language: String!
-    audioUrl: String!
+    id: ID
+    videoId: [Video]!
+    language: String
+    audioUrl: String
   }
 
   type Language {
-    id: ID!
-    name: String!
+    id: ID
+    name: String
     languageCode: String!
   }
 
   type Payment {
-    id: ID!
-    userId: ID!
-    amount: Float!
-    date: String!
+    id: ID
+    userId: [User]!
+    amount: Int
+    date: String
   }
 
   type Collaboration {
-    id: ID!
-    userId: ID!
-    videoId: ID!
-    role: String!
+    id: ID
+    userId: [User]!
+    videoId: [Video]!
+    role: String
   }
 
   type Analytics {
-    id: ID!
-    userId: ID!
-    videoId: ID!
-    subtitleDownloads: Int!
-    voiceoverDownloads: Int!
+    id: ID
+    userId: [User]!
+    videoId: [Video]!
+    subtitleDownloads: Int
+    voiceoverDownloads: Int
     feedback: String
+    timestamp: Int
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
@@ -85,12 +92,12 @@ const typeDefs = gql`
     addVoiceover(videoId: ID!, audioUrl: String!, languageCode: String!): Voiceover
     deleteVoiceover(id: ID!): Voiceover
     updateVoiceover(id: ID!, audioUrl: String!): Voiceover
-    addPayment(userId: ID!, amount: Float!): Payment
+    addPayment(userId: ID!, amount: Int!): Payment
     addCollaborator(videoId: ID!, email: String!): Collaboration
     deleteCollaborator(id: ID!): Collaboration
     addAnalytics(videoId: ID!, views: Int!, likes: Int!, dislikes: Int!): Analytics
     updateAnalytics(id: ID!, views: Int!, likes: Int!, dislikes: Int!): Analytics
-    uploadVideo(file: Upload!): Video
+    uploadVideo(file: String!): Video
     transcribeAudio(audioUrl: String!, languageCode: String!): String
   }
 
