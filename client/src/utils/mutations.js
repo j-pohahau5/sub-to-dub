@@ -21,7 +21,15 @@ export const ADD_USER = gql`
     }
   }
 `;
-
+export const CREATE_LANGUAGE = gql`
+mutation createLanguage($name: String!, $languageCode: String!) {
+  createLanguage(name: $name, languageCode: $languageCode) {
+    id
+    name
+    languageCode
+  }
+}
+`;
 export const ADD_SUBTITLE = gql`
   mutation addSubtitle($videoId: ID!, $text: String!, $languageCode: String!) {
     addSubtitle(videoId: $videoId, text: $text, languageCode: $languageCode) {

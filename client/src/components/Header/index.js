@@ -20,10 +20,6 @@ const Header = () => {
           <Link className="a" to="/">
             <h1 className="m-2">Sub To Dub</h1>
           </Link>
-
-
-            {/* <img src={logo} alt=""/> */}
-
           <p className="m-0"></p>
         </div>
         <div>

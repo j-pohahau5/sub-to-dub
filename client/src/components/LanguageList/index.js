@@ -1,17 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_ALL_LANGUAGES } from '../queries';
 
-const LanguageList = () => {
-    <div className="language-list">
-        <input/>
-        <div className="down-arrow">
-            <svg
-            focusable="false"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24"
-            >
-                <path d="M7 10l5 5 5-5z"></path>
-            </svg>
-        </div>
+function LanguageList() {
+  const { loading, error, data } = useQuery(QUERY_ALL_LANGUAGES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return (
+    <div>
+      <h2>Languages</h2>
+      <ul>
+        {data.getLanguages.map(language => (
+          <li key={language.id}>
+            {language.name} ({language.languageCode})
+          </li>
+        ))}
+      </ul>
     </div>
+  );
 }
+
+export default LanguageList;
