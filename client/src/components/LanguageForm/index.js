@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { CREATE_LANGUAGE } from './mutations';
+import { CREATE_LANGUAGE } from '../../utils/mutations';
 
 function LanguageForm() {
   const [name, setName] = useState('');

@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
-import { ADD_SUBTITLE } from './mutations';
+import { ADD_SUBTITLE } from '../../utils/mutations';
 
 function SubtitleForm() {
   const [videoId, setVideoId] = useState('');

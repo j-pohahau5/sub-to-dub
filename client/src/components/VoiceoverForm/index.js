@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import { GENERATE_VOICEOVER } from './mutations';
+import { GENERATE_VOICEOVER } from '../../utils/mutations';
 import React, { useState } from 'react';
 
 const VoiceoverForm = ({ videoId }) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TRANSLATE_SUBTITLE } from './mutations';
+import { TRANSLATE_SUBTITLE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
-import { QUERY_ALL_SUBTITLES } from './queries';
+import { QUERY_ALL_SUBTITLES } from '../../utils/queries';
 
 function TranslateSubtitleForm(thisVideoId) {
   const [subtitleId, setSubtitleId] = useState('');

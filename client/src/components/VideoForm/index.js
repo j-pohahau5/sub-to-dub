@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import { UPLOAD_VIDEO } from './mutations';
+import { UPLOAD_VIDEO } from '../../utils/mutations';
 import React, { useState } from 'react';
 
 function VideoUploadForm() {
