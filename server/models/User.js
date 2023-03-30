@@ -27,7 +27,6 @@ const userSchema = new Schema({
   videos: {
     type: Schema.Types.ObjectId,
     ref: 'Video',
-    required: true,
   }
 });
 

@@ -6,7 +6,6 @@
     "proxy": "http://localhost:3001/",
     "scripts": {
         "start": "node server.js",
-        "seed": "",
         "watch": "nodemon server.js"
     },
     "authors": [

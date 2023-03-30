@@ -19,8 +19,7 @@ const Login = (props) => {
     });
   };
 
-  // submit form
-  const handleFormSubmit = async (event) => {
+  async function handleFormSubmit(event) {
     event.preventDefault();
     console.log(formState);
     try {
@@ -38,7 +37,7 @@ const Login = (props) => {
       email: '',
       password: '',
     });
-  };
+  }
 
   return (
     <main className="flex-row justify-center mb-4">

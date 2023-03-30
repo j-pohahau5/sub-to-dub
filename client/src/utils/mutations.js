@@ -5,7 +5,10 @@ export const LOGIN_USER = gql`
     loginUser(email: $email, password: $password) {
       token
       user {
-        _id
+        id
+        username
+        name 
+        email
       }
     }
   }
@@ -131,7 +134,7 @@ export const DELETE_COLLABORATOR = gql`
 `;
 
 export const ADD_ANALYTICS = gql`
-  mutation addAnalytics($videoId: ID!, views: Int!, likes: Int!, dislikes: Int! {
+  mutation addAnalytics($videoId: ID!, $views: Int!, $likes: Int!, $dislikes: Int!) {
     addAnalytics(videoId: $videoId, views: $views, likes: $likes, dislikes: $dislikes) {
       id
       views
@@ -142,7 +145,7 @@ export const ADD_ANALYTICS = gql`
 `;
 
 export const UPDATE_ANALYTICS = gql`
-  mutation updateAnalytics($id: ID!, views: Int!, likes: Int!, dislikes: Int!) {
+  mutation updateAnalytics($id: ID!, $views: Int!, $likes: Int!, $dislikes: Int!) {
     updateAnalytics(id: $id, views: $views, likes: $likes, dislikes: $dislikes) {
       id
       views
